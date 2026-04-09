@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navior Health | Personalized Health & Wellness Treatments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1631;--navy-l:#152a5a;--navy-d:#070d1f;
+  --white:#fff;--off:#f7f9fc;--bg:#f0f4f8;
+  --cat:#dce8f3;--teal:#1a6b5a;--teal-d:#14574a;
+  --green-b:#1b7a37;--black:#1a1a2e;
+  --g6:#4a5468;--g4:#8c95a6;--g2:#dde3ed;--g1:#eef1f6;
+  --fh:'DM Serif Display',serif;--fb:'DM Sans',sans-serif;
+  --r:16px;--rs:10px;--rl:24px;--rf:999px;
+  --sh:0 4px 20px rgba(0,0,0,.06);--shm:0 8px 30px rgba(0,0,0,.1);
+  --tr:.4s cubic-bezier(.25,.46,.45,.94);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);color:var(--black);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+img{max-width:100%;display:block;object-fit:cover}a{text-decoration:none;color:inherit}button{font-family:var(--fb);cursor:pointer;border:none;background:none}ul{list-style:none}
+.sr{opacity:0;transform:translateY(32px);transition:opacity .6s ease,transform .6s ease}.sr.v{opacity:1;transform:translateY(0)}
+.sr-d1{transition-delay:.1s}.sr-d2{transition-delay:.2s}.sr-d3{transition-delay:.3s}.sr-d4{transition-delay:.4s}
+
+/* NAVBAR */
+.nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:16px 5%;background:var(--white);border-bottom:1px solid rgba(0,0,0,.05);transition:var(--tr)}
+.nav.sc{box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.n-logo{display:flex;align-items:center;gap:10px}
+.n-logo svg{width:36px;height:36px}
+.n-logo .nb{font-family:var(--fh);font-size:1.55rem;color:var(--navy)}.n-logo .ns{font-size:.46rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:block;margin-top:-2px}
+.n-r{display:flex;align-items:center;gap:14px}
+.n-login{padding:9px 24px;border:1.5px solid var(--black);border-radius:var(--rf);font-size:.86rem;font-weight:600;color:var(--black);transition:all var(--tr)}.n-login:hover{background:var(--black);color:var(--white)}
+.n-prof{position:relative;display:none}.n-prof.on{display:flex}
+.p-btn{width:35px;height:35px;border-radius:50%;background:var(--navy);color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;cursor:pointer}
+.p-drop{position:absolute;top:calc(100% + 10px);right:0;width:210px;background:var(--white);border-radius:var(--rs);box-shadow:var(--shm);border:1px solid var(--g2);opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .25s;z-index:100;overflow:hidden}
+.p-drop.open{opacity:1;visibility:visible;transform:translateY(0)}
+.pd-h{padding:13px 15px;border-bottom:1px solid var(--g1);background:var(--off)}.pd-h .pn{font-weight:700;font-size:.88rem}.pd-h .pe{font-size:.7rem;color:var(--g4);margin-top:1px}
+.pd-m a,.pd-m button{display:flex;align-items:center;gap:8px;padding:10px 15px;width:100%;font-size:.84rem;color:var(--g6);transition:all var(--tr);text-align:left}.pd-m a:hover,.pd-m button:hover{background:var(--off)}.pd-m .dv{height:1px;background:var(--g1);margin:3px 0}.pd-m .lo{color:#ef4444}.pd-m .lo:hover{background:#fef2f2}
+.hb{display:flex;flex-direction:column;gap:6px;padding:8px;cursor:pointer}.hb span{width:24px;height:2.5px;background:var(--black);border-radius:2px;transition:var(--tr)}.hb.op span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}.hb.op span:nth-child(2){opacity:0}.hb.op span:nth-child(3){transform:rotate(-45deg) translate(6px,-6px)}
+.mobm{position:fixed;inset:0;z-index:9998;background:var(--white);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .3s}.mobm.op{opacity:1;pointer-events:all}.mobm a{font-family:var(--fh);font-size:1.5rem;color:var(--navy)}
+
+/* HERO */
+.hero{padding:120px 5% 50px;background:var(--white)}
+.hero-inner{max-width:1320px;margin:0 auto}
+.hero-rot{font-family:var(--fh);font-size:2rem;color:var(--g4);font-style:italic;margin-bottom:8px;height:2.6rem;overflow:hidden;position:relative}
+.hero-rot span{position:absolute;left:0;opacity:0;transform:translateY(20px);transition:all .6s ease;white-space:nowrap}
+.hero-rot span.act{opacity:1;transform:translateY(0)}
+.hero h1{font-family:var(--fh);font-size:4.2rem;color:var(--black);line-height:1.06;letter-spacing:-.02em;margin-bottom:16px}
+.hero-sub{font-size:1.08rem;color:var(--g4);font-style:italic;max-width:700px;line-height:1.7}
+
+/* CATEGORIES 3+4 */
+.cats{padding:40px 5% 90px;background:var(--white)}
+.c-top{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px;max-width:1320px;margin-left:auto;margin-right:auto}
+.c-btm{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1320px;margin-left:auto;margin-right:auto}
+.cc{background:var(--cat);border-radius:var(--r);padding:26px 26px 0;min-height:270px;cursor:pointer;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:all .5s ease}
+.cc::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .5s;border-radius:var(--r);z-index:0}
+.cc:hover::before{opacity:1}
+.cc:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,0,0,.15)}
+.cc:hover .ct{color:var(--white)}.cc:hover .ca svg{stroke:var(--white)}.cc:hover .cpop{background:var(--white)}
+.cc.h-teal::before{background:linear-gradient(160deg,#1a6b5a,#14574a)}.cc.h-teal:hover .cpop{color:#1a6b5a}
+.cc.h-purple::before{background:linear-gradient(160deg,#7c5cbf,#5a3d9e)}.cc.h-purple:hover .cpop{color:#7c5cbf}
+.cc.h-blue::before{background:linear-gradient(160deg,#3b6fa0,#2a5580)}.cc.h-blue:hover .cpop{color:#3b6fa0}
+.cc.h-rose::before{background:linear-gradient(160deg,#b05080,#903a65)}.cc.h-rose:hover .cpop{color:#b05080}
+.cc.h-amber::before{background:linear-gradient(160deg,#8a7030,#6b5520)}.cc.h-amber:hover .cpop{color:#8a7030}
+.cc.h-cyan::before{background:linear-gradient(160deg,#2a8a8a,#1e6e6e)}.cc.h-cyan:hover .cpop{color:#2a8a8a}
+.cc.h-navy::before{background:linear-gradient(160deg,#1a3060,#0e2040)}.cc.h-navy:hover .cpop{color:#1a3060}
+.ch{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;margin-bottom:auto}
+.ct{font-family:var(--fh);font-size:1.35rem;color:var(--black);transition:color .4s}
+.cr{display:flex;align-items:center;gap:8px}
+.cpop{padding:5px 14px;border-radius:var(--rf);background:var(--green-b);color:var(--white);font-size:.68rem;font-weight:700;transition:all .4s}
+.ca{width:28px;height:28px;display:flex;align-items:center;justify-content:center}.ca svg{width:16px;height:16px;stroke:var(--black);transition:stroke .4s}
+.ci{position:relative;z-index:1;display:flex;justify-content:center;align-items:flex-end;flex:1;padding-top:10px}
+.ci img{height:130px;object-fit:contain;transition:all .5s;filter:drop-shadow(0 6px 14px rgba(0,0,0,.1))}.cc:hover .ci img{transform:scale(1.08)}
+.c-btm .cc{min-height:230px;padding:22px 22px 0}.c-btm .ct{font-size:1.15rem}.c-btm .ci img{height:110px}
+
+/* UNLOCK */
+.unlock{background:#6d8da8;padding:80px 5%;text-align:center;color:var(--white)}
+.unlock h2{font-family:var(--fh);font-size:2.8rem;margin-bottom:10px}
+.unlock>p{color:rgba(255,255,255,.7);font-size:1.02rem;max-width:600px;margin:0 auto 30px}
+.unlock-img{max-width:500px;margin:0 auto 30px}.unlock-img img{width:100%}
+.u-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.u-b1{padding:15px 34px;background:var(--white);color:var(--black);border-radius:var(--rf);font-weight:600;font-size:.92rem;border:2px solid var(--white);transition:all var(--tr)}.u-b1:hover{background:transparent;color:var(--white)}
+.u-b2{padding:15px 34px;background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.4);border-radius:var(--rf);font-weight:600;font-size:.92rem;transition:all var(--tr)}.u-b2:hover{border-color:var(--white)}
+
+/* DUAL CTA */
+.dual{padding:20px 5% 90px;background:var(--white)}
+.dg{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dc{border-radius:var(--rl);overflow:hidden;position:relative;min-height:400px;display:flex;flex-direction:column;justify-content:flex-end;padding:36px}
+.dc-bg{position:absolute;inset:0;z-index:0}.dc-bg img{width:100%;height:100%;object-fit:cover}
+.dc-ov{position:absolute;inset:0;z-index:1}
+.dc.d1 .dc-ov{background:linear-gradient(to right,rgba(11,22,49,.85) 40%,rgba(11,22,49,.3))}
+.dc.d2 .dc-ov{background:linear-gradient(to top,rgba(11,22,49,.8),rgba(11,22,49,.3) 60%)}
+.dc-c{position:relative;z-index:2;color:var(--white)}
+.dc-c h3{font-family:var(--fh);font-size:1.5rem;margin-bottom:12px;line-height:1.25}
+.dc-c .db{display:inline-flex;padding:13px 28px;background:var(--white);color:var(--navy);border-radius:var(--rf);font-weight:600;font-size:.86rem;margin-top:10px;transition:all var(--tr)}.dc-c .db:hover{background:var(--off)}
+.pw{position:relative;z-index:2;color:var(--white)}.pw h3{font-family:var(--fh);font-size:1.4rem;margin-bottom:16px}
+.po{display:block;width:100%;max-width:280px;padding:12px 18px;margin-bottom:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.15);border-radius:var(--rs);font-size:.86rem;color:var(--white);text-align:left;transition:all var(--tr);font-family:var(--fb);backdrop-filter:blur(4px)}.po:hover,.po.sel{background:rgba(255,255,255,.25);border-color:rgba(255,255,255,.4)}
+
+/* TESTIMONIALS */
+.testi{padding:90px 5%;background:var(--white)}
+.t-in{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.tc{padding:10px 0}.t-logo{width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}.t-logo svg{width:26px;height:26px}
+.tc blockquote{font-family:var(--fh);font-size:1.45rem;color:var(--black);line-height:1.4;margin-bottom:24px;font-style:normal}
+.tn{font-weight:700;font-size:.92rem}.tl{font-size:.82rem;color:var(--g4)}
+.t-cta{margin-top:20px}.t-cta a{display:inline-flex;padding:14px 30px;background:var(--navy);color:var(--white);border-radius:var(--rf);font-weight:600;font-size:.88rem;transition:all var(--tr)}.t-cta a:hover{background:var(--navy-l)}
+.t-disc{margin-top:28px;color:var(--g4);font-size:.7rem;max-width:900px;line-height:1.6}
+
+/* FEATURES */
+.feat{padding:90px 5%;background:var(--white)}
+.sh{text-align:center;margin-bottom:48px}.sh h2{font-family:var(--fh);font-size:2.6rem;color:var(--black);margin-bottom:10px}.sh p{color:var(--g4);font-size:.98rem;max-width:650px;margin:0 auto}
+.fg{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.fc{background:var(--white);border-radius:var(--r);padding:30px 22px;border:1px solid var(--g2);transition:all var(--tr)}
+.fc:hover{transform:translateY(-5px);box-shadow:var(--shm);border-color:var(--teal);background:var(--teal);color:var(--white)}.fc:hover h3,.fc:hover p{color:var(--white)}.fc:hover .fi{background:rgba(255,255,255,.15)}
+.fi{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;background:rgba(26,107,90,.08);transition:all var(--tr)}.fi svg{width:28px;height:28px}
+.fc h3{font-family:var(--fh);color:var(--black);font-size:1.02rem;margin-bottom:8px;transition:color var(--tr)}.fc p{color:var(--g4);font-size:.82rem;line-height:1.65;transition:color var(--tr)}
+
+/* HOW IT WORKS */
+.hiw{padding:90px 5%;background:var(--off)}
+.hg{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.hc{background:var(--white);border-radius:var(--rl);overflow:hidden;border:1px solid var(--g2);transition:all var(--tr)}.hc:hover{box-shadow:var(--shm);transform:translateY(-4px)}
+.hc-img{height:220px;overflow:hidden}.hc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.hc:hover .hc-img img{transform:scale(1.05)}
+.hc-body{padding:26px}.hc-body h3{font-family:var(--fh);font-size:1.15rem;color:var(--black);margin-bottom:6px}.hc-body p{color:var(--g4);font-size:.85rem;line-height:1.6;margin-bottom:14px}
+.hc-body a{display:inline-flex;padding:11px 24px;background:var(--navy);color:var(--white);border-radius:var(--rf);font-weight:600;font-size:.82rem;transition:all var(--tr)}.hc-body a:hover{background:var(--navy-l)}
+
+/* WELLNESS SLIDER */
+.well{padding:90px 0;background:var(--white)}
+.well .sh{padding:0 5%}
+.wt{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:0 5%}.wt::-webkit-scrollbar{display:none}
+.wc{min-width:320px;max-width:340px;flex-shrink:0;scroll-snap-align:start;border-radius:var(--rl);overflow:hidden;position:relative;height:400px;cursor:pointer}
+.wc img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.wc:hover img{transform:scale(1.06)}
+.wc-ov{position:absolute;bottom:0;left:0;right:0;padding:24px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:var(--white)}.wc-ov h4{font-family:var(--fh);font-size:1.15rem;margin-bottom:2px}.wc-ov p{font-size:.78rem;opacity:.7}
+
+/* FAQ */
+.faq{padding:90px 5%;background:var(--white)}
+.fql{max-width:900px;margin:0 auto}
+.fq{border-bottom:1px solid var(--g2)}
+.fq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;width:100%;text-align:left;font-family:var(--fh);font-size:1.25rem;color:var(--black);cursor:pointer;background:none;border:none}
+.fq-t{width:32px;height:32px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;transition:all var(--tr);flex-shrink:0}.fq.op .fq-t{transform:rotate(45deg)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}.fq.op .fq-a{max-height:200px}
+.fq-ai{padding:0 0 24px;color:var(--g4);font-size:.92rem;line-height:1.7}
+
+/* ADVISORS */
+.adv{padding:90px 5%;background:var(--off)}
+.advt{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:1320px;margin:0 auto}.advt::-webkit-scrollbar{display:none}
+.ac{min-width:340px;max-width:380px;flex-shrink:0;scroll-snap-align:start;background:var(--white);border-radius:var(--rl);overflow:hidden;border:1px solid var(--g2);transition:all var(--tr)}.ac:hover{transform:translateY(-5px);box-shadow:var(--shm)}
+.ac-ph{height:320px;background:#6d8da8;overflow:hidden}.ac-ph img{width:100%;height:100%;object-fit:cover}
+.ac-i{padding:24px}.ac-i h3{font-family:var(--fh);font-size:1.1rem;color:var(--black);margin-bottom:3px}.ac-i .at{color:var(--teal);font-size:.76rem;font-weight:600;margin-bottom:10px}.ac-i p{color:var(--g4);font-size:.8rem;line-height:1.6;margin-bottom:14px}
+.ac-edu{border-top:1px solid var(--g2);padding-top:14px}.edu-lb{font-size:.68rem;font-weight:700;color:var(--g4);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.edu-it{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.edu-ic{width:28px;height:28px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;flex-shrink:0}.edu-ic svg{width:14px;height:14px;fill:var(--g4)}
+.edu-it .en{font-size:.78rem;font-weight:600;color:var(--black)}.edu-it .ed{font-size:.7rem;color:var(--g4)}
+
+/* NEWSLETTER */
+.nlp{padding:0 5% 90px}
+.nl{background:var(--teal);overflow:hidden;border-radius:var(--rl);max-width:1320px;margin:0 auto}
+.nlg{display:grid;grid-template-columns:1.2fr .8fr;min-height:420px}
+.nlt{padding:60px 40px 60px 40px;color:var(--white);display:flex;flex-direction:column;justify-content:center}
+.nlt h2{font-family:var(--fh);font-size:2.4rem;margin-bottom:14px;line-height:1.1}
+.nlt>p{color:rgba(255,255,255,.65);font-size:.92rem;line-height:1.7;margin-bottom:24px}
+.nlf{display:flex;gap:10px;margin-bottom:20px}
+.nlf input{flex:1;padding:15px 20px;background:var(--white);border:none;border-radius:var(--rs);font-size:.9rem;font-family:var(--fb);color:var(--black);outline:none}.nlf input::placeholder{color:var(--g4)}
+.nlf button{padding:15px 26px;background:var(--navy);color:var(--white);border-radius:var(--rs);font-weight:700;font-size:.86rem;transition:all var(--tr);font-family:var(--fb);white-space:nowrap}.nlf button:hover{background:var(--navy-d)}
+.nls{color:rgba(255,255,255,.5);font-size:.82rem;line-height:1.6}
+.nli{overflow:hidden}.nli img{width:100%;height:100%;object-fit:cover}
+
+/* FOOTER */
+.footer{padding:52px 5% 22px;background:#2a2a2e}
+.fgr{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.06)}
+.fb .fl{margin-bottom:12px}.fb .fn{font-family:var(--fh);font-size:1.3rem;color:var(--white)}.fb .fs{font-size:.44rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block}
+.fb>p{color:rgba(255,255,255,.35);font-size:.8rem;line-height:1.65;max-width:300px}
+.f-soc{display:flex;gap:8px;margin-top:16px}.f-soc a{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;transition:all var(--tr)}.f-soc a:hover{background:var(--teal)}.f-soc a svg{width:13px;height:13px;fill:rgba(255,255,255,.4)}.f-soc a:hover svg{fill:var(--white)}
+.fcc h4{color:var(--white);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}.fcc a{display:block;color:rgba(255,255,255,.32);font-size:.8rem;padding:3px 0;transition:color var(--tr)}.fcc a:hover{color:var(--white)}
+.fbt{display:flex;justify-content:space-between;align-items:center;max-width:1320px;margin:16px auto 0;color:rgba(255,255,255,.18);font-size:.72rem}
+.flg{display:flex;gap:16px}.flg a{color:rgba(255,255,255,.2);transition:color var(--tr)}.flg a:hover{color:rgba(255,255,255,.5)}
+
+/* AUTH */
+.ao{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}.ao.show{display:flex;opacity:1}
+.am{width:400px;max-width:94vw;background:var(--white);border-radius:var(--rl);overflow:hidden;box-shadow:var(--shm);position:relative}
+.ax{position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--g4);cursor:pointer;z-index:2}.ax:hover{background:var(--g2)}
+.ah{padding:28px 28px 0;text-align:center}.ah h2{font-family:var(--fh);font-size:1.5rem;color:var(--black);margin-bottom:4px}.ah p{color:var(--g4);font-size:.85rem}
+.af{padding:22px 28px 28px}
+.afl{margin-bottom:12px}.afl label{display:block;font-size:.78rem;font-weight:600;color:var(--g6);margin-bottom:4px}.afl input{width:100%;padding:12px 14px;background:var(--off);border:1px solid var(--g2);border-radius:var(--rs);font-size:.86rem;font-family:var(--fb);color:var(--black);outline:none;transition:all var(--tr)}.afl input:focus{border-color:var(--teal)}
+.asb{width:100%;padding:13px;background:var(--navy);color:var(--white);border:none;border-radius:var(--rs);font-size:.88rem;font-weight:700;cursor:pointer;margin-top:6px;font-family:var(--fb)}.asb:hover{background:var(--navy-l)}
+.asw{text-align:center;margin-top:14px;font-size:.82rem;color:var(--g4)}.asw a{color:var(--teal);font-weight:600;cursor:pointer}
+
+/* BUTTONS */
+.stt{position:fixed;bottom:96px;right:28px;z-index:9990;width:44px;height:44px;border-radius:50%;background:var(--white);border:1px solid var(--g2);display:flex;align-items:center;justify-content:center;box-shadow:var(--sh);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:all var(--tr)}.stt.show{opacity:1;visibility:visible;transform:translateY(0)}.stt:hover{border-color:var(--teal)}.stt svg{width:16px;height:16px;stroke:var(--g6)}
+.chat{position:fixed;bottom:28px;right:28px;z-index:9990;padding:12px 20px;border-radius:var(--rf);background:var(--black);color:var(--white);display:flex;align-items:center;gap:8px;font-size:.88rem;font-weight:600;cursor:pointer;box-shadow:0 6px 22px rgba(0,0,0,.2);transition:all var(--tr)}.chat:hover{background:#333;transform:translateY(-2px)}.chat svg{width:17px;height:17px}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.c-top{grid-template-columns:repeat(2,1fr)}.c-btm{grid-template-columns:repeat(2,1fr)}.dg,.t-in,.hg,.nlg{grid-template-columns:1fr}.fg{grid-template-columns:repeat(2,1fr)}.fgr{grid-template-columns:1fr 1fr}.nli{display:none}.nlt{padding:50px 30px}}
+@media(max-width:768px){.hero h1{font-size:2.6rem}.c-top,.c-btm,.fg{grid-template-columns:1fr}.hg{grid-template-columns:1fr}.fgr{grid-template-columns:1fr}.fbt{flex-direction:column;gap:8px;text-align:center}.nlf{flex-direction:column}.chat span{display:none}.chat{padding:13px;border-radius:50%}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#" class="n-logo"><svg viewBox="0 0 40 40" fill="none"><circle cx="27" cy="9" r="4" fill="#0b1631" opacity=".8"/><path d="M6 34C6 34 13 17 20 13C27 9 35 16 35 25" stroke="#0b1631" stroke-width="2.8" stroke-linecap="round"/><path d="M11 29C11 29 17 20 22 18C27 16 31 21 33 25" stroke="#0b1631" stroke-width="2.2" stroke-linecap="round" opacity=".35"/></svg><div><span class="nb">Navior</span><span class="ns">Health</span></div></a>
+  <div class="n-r">
+    <a href="#" class="n-login" id="oL">Login</a>
+    <div class="n-prof" id="nP"><div class="p-btn" id="pB">N</div><div class="p-drop" id="pD"><div class="pd-h"><div class="pn" id="pdN">User</div><div class="pe" id="pdE">user@email.com</div></div><div class="pd-m"><a href="#">⚙️ Settings</a><a href="#">👤 Profile</a><div class="dv"></div><button class="lo" id="loB">🚪 Log Out</button></div></div></div>
+    <button class="hb" id="hb"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobm" id="mm"><a href="#cats" onclick="cM()">Treatments</a><a href="#hiw" onclick="cM()">How It Works</a><a href="#adv" onclick="cM()">Advisors</a><a href="#faq" onclick="cM()">FAQ</a></div>
+
+<div class="ao" id="lM"><div class="am"><button class="ax" onclick="cA('l')">✕</button><div class="ah"><h2>Welcome Back</h2><p>Sign in to Navior Health</p></div><div class="af"><div class="afl"><label>Email</label><input type="email" id="lE" placeholder="you@example.com"></div><div class="afl"><label>Password</label><input type="password" id="lP" placeholder="Password"></div><button class="asb" onclick="dL()">Sign In</button><div class="asw">No account? <a onclick="cA('l');oA('s')">Sign Up</a></div></div></div></div>
+<div class="ao" id="sM"><div class="am"><button class="ax" onclick="cA('s')">✕</button><div class="ah"><h2>Create Account</h2><p>Start your health journey</p></div><div class="af"><div class="afl"><label>Full Name</label><input type="text" id="sN" placeholder="John Doe"></div><div class="afl"><label>Email</label><input type="email" id="sE" placeholder="you@example.com"></div><div class="afl"><label>Password</label><input type="password" id="sP" placeholder="Password"></div><button class="asb" onclick="dS()">Create Account</button><div class="asw">Have an account? <a onclick="cA('s');oA('l')">Sign In</a></div></div></div></div>
+
+<section class="hero"><div class="hero-inner sr">
+  <div class="hero-rot" id="hR"><span class="act">Weight Loss</span><span>Men's Health</span><span>Wellness / Longevity</span><span>Mental Health</span><span>Women's Health</span><span>DNA Testing</span></div>
+  <h1>Personalized For You</h1>
+  <p class="hero-sub">Feel stronger, age smarter, and live better with treatments built around your body — delivered 100% online.</p>
+</div></section>
+
+<section class="cats" id="cats">
+  <div class="c-top">
+    <div class="cc h-teal sr"><div class="ch"><span class="ct">Weight Loss</span><div class="cr"><span class="cpop">Popular</span><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/weight-loss-newpr-1.png" alt="Semaglutide"></div></div>
+    <div class="cc h-teal sr sr-d1"><div class="ch"><span class="ct">Men's Health</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/mens-health-newpr-2.png" alt="Tadalafil"></div></div>
+    <div class="cc h-blue sr sr-d2"><div class="ch"><span class="ct">Wellness / Longevity</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/wellness-log-newpr-3.png" alt="NAD+"></div></div>
+  </div>
+  <div class="c-btm">
+    <div class="cc h-purple sr"><div class="ch"><span class="ct">Mental Health</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/mental-health-newpr-4.png" alt="Methylene Blue"></div></div>
+    <div class="cc h-rose sr sr-d1"><div class="ch"><span class="ct">Women's Health</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/envato-labs-image-edit-12-1.png" alt="Glutathione"></div></div>
+    <div class="cc h-amber sr sr-d2"><div class="ch"><span class="ct">DNA Testing</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/dna-epigenetic-newpr-6.png" alt="DNA Kit"></div></div>
+    <div class="cc h-cyan sr sr-d3"><div class="ch"><span class="ct">Instant Health Check</span><div class="cr"><div class="ca"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></div></div></div><div class="ci"><img src="https://www.vitalogixs.com/assets/images/sym_logo-removebg.png" alt="SymCheck" style="height:80px"></div></div>
+  </div>
+</section>
+
+<section class="unlock">
+  <h2 class="sr">Unlock Your Best Self with Navior Health</h2>
+  <p class="sr sr-d1">Personalized health, wellness, and longevity powered by advanced DNA insights.</p>
+  <div class="unlock-img sr sr-d2"><img src="https://www.vitalogixs.com/assets/images/man-1.png" alt="Man"></div>
+  <div class="u-btns sr sr-d3"><a href="#" class="u-b1" onclick="oA('s')">Get Started</a><a href="#" class="u-b2">Is this right for me?</a></div>
+</section>
+
+<section class="dual">
+  <div class="dg">
+    <div class="dc d1 sr"><div class="dc-bg"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80" alt=""></div><div class="dc-ov"></div><div class="dc-c"><h3>Take control in bed, perform stronger, last longer, and feel confident again.</h3><a href="#" class="db">Get Started</a></div></div>
+    <div class="dc d2 sr sr-d1"><div class="dc-bg"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt=""></div><div class="dc-ov"></div><div class="pw"><h3>What's your biggest goal with weight loss?</h3><button class="po" onclick="sP(this)">Burn fat faster</button><button class="po" onclick="sP(this)">Build lean muscle</button><button class="po" onclick="sP(this)">Control appetite</button><button class="po" onclick="sP(this)">All of the above</button></div></div>
+  </div>
+</section>
+
+<section class="testi"><div class="t-in">
+  <div class="tc sr"><div class="t-logo"><svg viewBox="0 0 40 40" fill="none"><circle cx="27" cy="9" r="4" fill="white" opacity=".9"/><path d="M6 34C6 34 13 17 20 13C27 9 35 16 35 25" stroke="white" stroke-width="2.8" stroke-linecap="round"/></svg></div><blockquote>I've been on the Navior Health program and already lost over 30 pounds. The team thoroughly reviews blood work and labs to ensure you reach your goals. My recent labs show dramatic improvement.</blockquote><div class="tn">Ben from Encinitas</div><div class="tl">California</div></div>
+  <div class="tc sr sr-d1"><div class="t-logo"><svg viewBox="0 0 40 40" fill="none"><circle cx="27" cy="9" r="4" fill="white" opacity=".9"/><path d="M6 34C6 34 13 17 20 13C27 9 35 16 35 25" stroke="white" stroke-width="2.8" stroke-linecap="round"/></svg></div><blockquote>I wasn't sure what to expect, but the experience exceeded my expectations. Quick, private, and easy. The team was supportive every step. No hassle, no judgment — just real results.</blockquote><div class="tn">Michael, 38</div><div class="tl">Navior Health Performance Support</div></div>
+</div><div class="t-cta sr"><a href="#" onclick="oA('s')">Get Results →</a></div><div class="t-disc">Compounded products are not approved nor evaluated for safety, effectiveness, or quality by the FDA. Paid testimonials. Results not independently verified. Individual results vary.</div></section>
+
+<section class="feat"><div class="sh sr"><h2>Discover Wellness with Navior Health</h2><p>A modern health platform offering AI-powered, doctor-trusted treatments delivered privately and 100% online.</p></div>
+  <div class="fg">
+    <div class="fc sr"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6b5a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg></div><h3>Doctor-approved plans 100% online consultation</h3><p>Receive personalized treatment plans reviewed by certified medical professionals.</p></div>
+    <div class="fc sr sr-d1"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6b5a" stroke-width="1.5"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M16 7V5a4 4 0 00-8 0v2"/></svg></div><h3>Fast, discreet shipping</h3><p>Your order is packed securely and shipped quickly with full privacy.</p></div>
+    <div class="fc sr sr-d2"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6b5a" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h3>No insurance required</h3><p>Access affordable treatment without insurance paperwork or hidden fees.</p></div>
+    <div class="fc sr sr-d3"><div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="#1a6b5a" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>24/7 patient support</h3><p>Our team is available around the clock for questions and assistance.</p></div>
+  </div>
+</section>
+
+<section class="hiw" id="hiw"><div class="sh sr"><h2>Simple, Smart, Safe</h2><p>Skip insurance hassles — expert-approved treatments straight to you.</p></div>
+  <div class="hg">
+    <div class="hc sr"><div class="hc-img"><img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=80" alt=""></div><div class="hc-body"><h3>Choose your treatment</h3><p>Select a wellness category that aligns with your goals.</p><a href="#" onclick="oA('s')">Get Started</a></div></div>
+    <div class="hc sr sr-d1"><div class="hc-img"><img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&q=80" alt=""></div><div class="hc-body"><h3>Complete your online form</h3><p>Share your medical history in minutes — 100% private.</p><a href="#" onclick="oA('s')">Get Started</a></div></div>
+    <div class="hc sr sr-d2"><div class="hc-img"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt=""></div><div class="hc-body"><h3>Provider review</h3><p>A licensed medical provider reviews your personalized plan.</p><a href="#" onclick="oA('s')">Get Started</a></div></div>
+    <div class="hc sr sr-d3"><div class="hc-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt=""></div><div class="hc-body"><h3>Delivery to your door</h3><p>Your custom prescription shipped securely and discreetly.</p><a href="#" onclick="oA('s')">Get Started</a></div></div>
+  </div>
+</section>
+
+<section class="well"><div class="sh sr"><h2>Your Wellness, Our Mission</h2><p>Explore doctor-backed solutions tailored to your body's unique needs.</p></div>
+  <div class="wt">
+    <div class="wc sr"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80" alt=""><div class="wc-ov"><h4>Healthy Weight</h4><p>Personalized Weight Support</p></div></div>
+    <div class="wc sr sr-d1"><img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=500&q=80" alt=""><div class="wc-ov"><h4>Hormone Health</h4><p>TRT Plans Tailored to You</p></div></div>
+    <div class="wc sr sr-d2"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&q=80" alt=""><div class="wc-ov"><h4>Performance Support</h4><p>ED Treatment Plans</p></div></div>
+    <div class="wc sr sr-d3"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=500&q=80" alt=""><div class="wc-ov"><h4>Cellular Health</h4><p>Science-Backed Anti-Aging</p></div></div>
+  </div>
+</section>
+
+<section class="faq" id="faq"><div class="sh sr"><h2>Your Health, Our Priority</h2><p>Expert-led care designed for your unique lifestyle.</p></div>
+  <div class="fql">
+    <div class="fq op sr"><button class="fq-q" onclick="tF(this)">What is Navior Health? <span class="fq-t">+</span></button><div class="fq-a"><div class="fq-ai">Navior Health is a healthcare and wellness service, providing personalized treatment options delivered 100% online.</div></div></div>
+    <div class="fq sr sr-d1"><button class="fq-q" onclick="tF(this)">Do I need insurance? <span class="fq-t">+</span></button><div class="fq-a"><div class="fq-ai">No, you don't need insurance. Our plans are designed to be affordable and accessible.</div></div></div>
+    <div class="fq sr sr-d2"><button class="fq-q" onclick="tF(this)">Is it available in all states? <span class="fq-t">+</span></button><div class="fq-a"><div class="fq-ai">Yes, our services are available in most states nationwide with expanding coverage.</div></div></div>
+    <div class="fq sr sr-d3"><button class="fq-q" onclick="tF(this)">Who are your providers? <span class="fq-t">+</span></button><div class="fq-a"><div class="fq-ai">We have licensed medical providers who specialize in wellness and treatment solutions.</div></div></div>
+  </div>
+</section>
+
+<section class="adv" id="adv"><div class="sh sr"><h2>Meet Our Advisors</h2><p>Expert advisors bringing years of experience to guide your success.</p></div>
+  <div class="advt">
+    <div class="ac sr"><div class="ac-ph"><img src="https://www.vitalogixs.com/assets/images/jeff_new.jpeg" alt="Jeff McCarrell"></div><div class="ac-i"><h3>Jeff McCarrell</h3><div class="at">CEO & Co-Founder</div><p>4-time Cancer Survivor with 30+ years in Health & Wellness. Certified Strength & Conditioning Coach.</p><div class="ac-edu"><div class="edu-lb">Education</div><div class="edu-it"><div class="edu-ic"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg></div><div><div class="en">B.Sc. and M.Sc.</div><div class="ed">Certified Strength & Conditioning Specialist</div></div></div></div></div></div>
+    <div class="ac sr sr-d1"><div class="ac-ph"><img src="https://www.vitalogixs.com/assets/images/michael_new.jpeg" alt="Dr. Michael Meighen"></div><div class="ac-i"><h3>Dr. Michael John Meighen, MD</h3><div class="at">Physiatrist, Health Optimization</div><p>Passionate about revolutionizing healthcare delivery and improving patient outcomes.</p><div class="ac-edu"><div class="edu-lb">Education</div><div class="edu-it"><div class="edu-ic"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg></div><div><div class="en">University of Toledo</div><div class="ed">College of Medicine</div></div></div></div></div></div>
+    <div class="ac sr sr-d2"><div class="ac-ph"><img src="https://www.vitalogixs.com/assets/images/Ben_new.jpeg" alt="Dr. Ben Littlejohn"></div><div class="ac-i"><h3>Dr. Ben Littlejohn, MD</h3><div class="at">Board-Certified Family Medicine</div><p>Over 20 years of experience in outpatient clinical medicine and family health.</p><div class="ac-edu"><div class="edu-lb">Education</div><div class="edu-it"><div class="edu-ic"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg></div><div><div class="en">Drew/UCLA School of Medicine</div><div class="ed">Doctor of Medicine (MD)</div></div></div></div></div></div>
+    <div class="ac sr sr-d3"><div class="ac-ph"><img src="https://www.vitalogixs.com/assets/images/tom_new.jpeg" alt="Tom Stratman"></div><div class="ac-i"><h3>Tom Stratman</h3><div class="at">Founder of Nutrition 50</div><p>Helping Food, Drug, and Nutrition companies develop and optimize health products.</p><div class="ac-edu"><div class="edu-lb">Education</div><div class="edu-it"><div class="edu-ic"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg></div><div><div class="en">University of Cincinnati</div><div class="ed">Biological Chemistry</div></div></div></div></div></div>
+  </div>
+</section>
+
+<div class="nlp"><section class="nl"><div class="nlg">
+  <div class="nlt sr"><h2>Clinically-Tested Health and Wellness That Work</h2><p>Navior Health offers doctor-recommended solutions designed to support hormone balance and overall vitality.</p><div class="nlf"><input type="email" placeholder="Email"><button>Get the guide</button></div><div class="nls">Be the first to know about new treatments, special offers, and wellness advice backed by doctors you can trust.</div></div>
+  <div class="nli"><img src="https://www.vitalogixs.com/assets/images/cheerful-female-enjoying-morning-sunlight-2025-03-16-09-11-43-utc-scaled-1.jpg" alt="Woman"></div>
+</div></section></div>
+
+<footer class="footer"><div class="fgr">
+  <div class="fb"><div class="fl"><span class="fn">Navior</span><span class="fs">HEALTH</span></div><p>Our mission is to empower you to take control of your health through convenient online consultations and treatments delivered to your doorstep.</p><div class="f-soc"><a href="#"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/></svg></a><a href="#"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="#"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/></svg></a><a href="#"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div></div>
+  <div class="fcc"><h4>Explore</h4><a href="#">Weight Loss</a><a href="#">Men's Health</a><a href="#">Wellness / Longevity</a><a href="#">Mental Health</a><a href="#">Women's Health</a><a href="#">DNA Testing</a></div>
+  <div class="fcc"><h4>Quick Links</h4><a href="#">Home</a><a href="#">About Us</a><a href="#">Contact Us</a></div>
+  <div class="fcc"><h4>Office Address</h4><a href="#">3208 E Colonial Dr #301<br>Orlando, FL 32803</a><a href="mailto:info@naviorhealth.com" style="margin-top:6px">info@naviorhealth.com</a><a href="tel:+14072141373">(407)-214-1373</a></div>
+</div><div class="fbt"><span>© 2026 Navior Health. All Rights Reserved.</span><div class="flg"><a href="#">Terms & Conditions</a><a href="#">Privacy Policy</a><a href="#">Refund Policy</a></div></div></footer>
+
+<button class="stt" id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<button class="chat" id="chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg><span>Chat</span></button>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',scrollY>50);document.getElementById('stt').classList.toggle('show',scrollY>400)});
+const rs=document.querySelectorAll('#hR span');let ri=0;setInterval(()=>{rs[ri].classList.remove('act');ri=(ri+1)%rs.length;rs[ri].classList.add('act')},2500);
+const hb=document.getElementById('hb'),mm=document.getElementById('mm');hb.addEventListener('click',()=>{hb.classList.toggle('op');mm.classList.toggle('op');document.body.style.overflow=mm.classList.contains('op')?'hidden':''});function cM(){hb.classList.remove('op');mm.classList.remove('op');document.body.style.overflow=''}
+const so=new IntersectionObserver(e=>{e.forEach(n=>{if(n.isIntersecting){n.target.classList.add('v');so.unobserve(n.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});document.querySelectorAll('.sr').forEach(el=>so.observe(el));
+function tF(b){const i=b.parentElement;const w=i.classList.contains('op');document.querySelectorAll('.fq').forEach(x=>x.classList.remove('op'));if(!w)i.classList.add('op')}
+function sP(b){document.querySelectorAll('.po').forEach(x=>x.classList.remove('sel'));b.classList.add('sel')}
+document.querySelectorAll('a[href^="#"]').forEach(l=>{l.addEventListener('click',e=>{const t=document.querySelector(l.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}})});
+function oA(t){document.getElementById(t==='l'?'lM':'sM').classList.add('show')}
+function cA(t){document.getElementById(t==='l'?'lM':'sM').classList.remove('show')}
+document.querySelectorAll('.ao').forEach(o=>{o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show')})});
+document.getElementById('oL').addEventListener('click',e=>{e.preventDefault();oA('l')});
+function dS(){const n=document.getElementById('sN').value.trim(),e=document.getElementById('sE').value.trim(),p=document.getElementById('sP').value.trim();if(!n||!e||!p){alert('Please fill all fields');return}localStorage.setItem('nh_u',JSON.stringify({name:n,email:e,pass:p}));cA('s');lI({name:n,email:e})}
+function dL(){const e=document.getElementById('lE').value.trim(),p=document.getElementById('lP').value.trim();if(!e||!p){alert('Please fill all fields');return}const u=JSON.parse(localStorage.getItem('nh_u')||'null');if(u&&u.email===e&&u.pass===p){cA('l');lI(u)}else{alert('Invalid credentials')}}
+function lI(u){document.getElementById('oL').style.display='none';const pr=document.getElementById('nP');pr.classList.add('on');pr.style.display='flex';document.getElementById('pB').textContent=u.name.charAt(0).toUpperCase();document.getElementById('pdN').textContent=u.name;document.getElementById('pdE').textContent=u.email}
+document.getElementById('pB').addEventListener('click',()=>{document.getElementById('pD').classList.toggle('open')});
+document.addEventListener('click',e=>{if(!document.getElementById('nP').contains(e.target))document.getElementById('pD').classList.remove('open')});
+document.getElementById('loB').addEventListener('click',()=>{localStorage.removeItem('nh_u');document.getElementById('nP').classList.remove('on');document.getElementById('nP').style.display='none';document.getElementById('oL').style.display='';document.getElementById('pD').classList.remove('open')});
+(function(){const u=JSON.parse(localStorage.getItem('nh_u')||'null');if(u)lI(u)})();
+document.getElementById('chat').addEventListener('click',()=>{alert('Chat widget coming soon!')});
+</script>
+</body>
+</html>
